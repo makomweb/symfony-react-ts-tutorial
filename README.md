@@ -4,6 +4,8 @@
 # create skeleton
 symfony new example-app --full
 
-# install dependencies
+# create an SPA controller
+php bin/console make:controller
 
+#
 ~~~
