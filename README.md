@@ -1,4 +1,4 @@
-# Tutorial project: Symfony + React + Type-Script
+# Tutorial project: Symfony + React + Typescript
 
 ~~~bash
 # create skeleton
@@ -16,6 +16,9 @@ npm install @babel/preset-react --dev
 npm install react-router-dom
 npm install react react-dom prop-types axios --dev
 npm install @babel/plugin-proposal-class-properties @babel/plugin-transform-runtime
+
+# install Typescript
+npm install typescript ts-loader@^9.0.0 --save-dev
 
 # run build
 npm run build
