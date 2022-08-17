@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function App() {
-    return (
-        <div>Hello React!</div>
-    );
+class App extends React.Component<any, any> {
+    render(): any {
+        return (<div>Hello!</div>);
+    }
 }
 
-export default App;
-
-if (document.getElementById('app')) {
-    ReactDOM.render(<App />, document.getElementById('app'));
-}
+ReactDOM.render(<App />, document.getElementById('app'));
