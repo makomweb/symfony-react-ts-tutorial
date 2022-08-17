@@ -16,4 +16,16 @@ npm install @babel/preset-react --dev
 npm install react-router-dom
 npm install react react-dom prop-types axios --dev
 npm install @babel/plugin-proposal-class-properties @babel/plugin-transform-runtime
+
+# run build
+npm run build
+
+# or run dev build
+npm run dev
+
+# or run development server
+npm run dev-server
+
+# run Symfony development server
+symfony serve -d
 ~~~
