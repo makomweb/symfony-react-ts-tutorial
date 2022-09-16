@@ -11,12 +11,12 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $john = new User();
-        $john->setName('John Doe');
+        $john->setName('John');
         $john->setAge(23);
         $john->setScore(0);
 
         $jane = new User();
-        $jane->setName('Jane Doe');
+        $jane->setName('Mary');
         $jane->setAge(24);
         $jane->setScore(0);
 
