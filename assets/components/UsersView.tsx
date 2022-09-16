@@ -1,4 +1,4 @@
-import {Grid, Typography} from "@mui/material";
+import {Box, CircularProgress, Grid, Typography} from "@mui/material";
 import React, {useContext} from "react";
 import {UserCard} from "./UserCard";
 import {UsersContext} from "../contexts/UsersContext";
@@ -8,11 +8,11 @@ export default function UsersView() {
 
     const getContent = () => {
         if (users === null) {
-            return <Typography>Loading ...</Typography>;
+            return <Grid flexGrow={1} textAlign={'center'}><CircularProgress /></Grid>;
         }
 
         if (users.length === 0) {
-            return <Typography>There are no users!</Typography>;
+            return <Typography align={'center'}>There are no users!</Typography>;
         }
 
         return users.map((user, index) => {
@@ -33,6 +33,7 @@ export default function UsersView() {
             spacing={0}
             alignItems="center"
             justifyContent="center"
+            alignContent={'center'}
             style={{ minHeight: '100vh' }}
         >
             <Grid item xs={3}>
