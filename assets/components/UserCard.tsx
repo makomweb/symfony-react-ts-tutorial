@@ -1,4 +1,15 @@
-import {Card, CardActionArea, CardContent, Chip, Typography} from "@mui/material";
+import {
+    Card,
+    CardActionArea,
+    CardContent,
+    CardHeader,
+    Chip,
+    CircularProgress,
+    Grid,
+    LinearProgress,
+    Stack,
+    Typography
+} from "@mui/material";
 import React from "react";
 
 export function UserCard(props) {
@@ -24,9 +35,11 @@ export function UserCard(props) {
                     <Typography gutterBottom variant="h5" component="div">
                         {user.name}
                     </Typography>
-                    <Chip
-                        label={getScoreText()}
-                        color={user.increasing ? 'warning': 'success'}/>
+                    {
+                        user.increasing
+                            ? <CircularProgress size={26}/>
+                            : <Chip label={getScoreText()} color={'success'} />
+                    }
                 </CardContent>
             </CardActionArea>
         </Card>
