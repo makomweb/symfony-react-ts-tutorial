@@ -1,5 +1,5 @@
 import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
-import * as React from "react";
+import React from "react";
 import {User} from "./User";
 
 export function UserCard(user: User) {
