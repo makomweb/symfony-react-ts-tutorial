@@ -24,16 +24,16 @@ function UsersContextProvider(props) {
     }
 
     const increaseScore = (user: User) => {
-        console.log('increase score!');
+        // TODO update the UI ???
         score(user.id)
             .then(response => {
-
+                // TODO update the UI ???
             })
             .catch(error => {
-
+                console.error('failed to increase score: ', error);
             })
             .finally(() => {
-
+                console.log('finished increasing score');
             });
     }
 
