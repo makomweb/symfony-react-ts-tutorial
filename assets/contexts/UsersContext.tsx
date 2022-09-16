@@ -1,5 +1,6 @@
 import React, {createContext, useEffect, useState} from "react";
-import {getUsers} from "../services/UsersService";
+import getUsers from "../services/UsersService";
+import UsersService from "../services/UsersService";
 
 export const UsersContext = createContext(null);
 
@@ -11,7 +12,8 @@ function UsersContextProvider(props) {
     const fetchUsers = () => {
         getUsers()
             .then(response => {
-                setUsers(response.users);
+                const { data } = response;
+                setUsers(data);
             })
             .catch(error => {
                 console.error('failed to load users: ', error);

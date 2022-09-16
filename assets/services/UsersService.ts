@@ -1,12 +1,8 @@
 import axios from "axios";
 import {User} from "../components/User";
 
-type UserResponse = {
-    users: User[];
-}
-
-export function getUsers(): Promise<UserResponse> {
-    return axios.get(
+export default function getUsers() {
+    return axios.get<Array<User>>(
         '/api/users',
         {
             headers: {
