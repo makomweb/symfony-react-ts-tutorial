@@ -1,24 +1,27 @@
-import {Container, Grid} from "@mui/material";
-import React from "react";
+import {Container, Grid, Typography} from "@mui/material";
+import React, {useContext} from "react";
 import {UserCard} from "./UserCard";
-import {User} from "./User";
-
-const john: User = {
-    name: "John Doe",
-    age: 23,
-}
-
-const jane: User = {
-    name: "Jane Doe",
-    age: 24,
-}
+import {UsersContext} from "../contexts/UsersContext";
 
 export default function UsersView() {
+    const { users } = useContext(UsersContext);
+
+    if (users === null) {
+        return <Typography>Loading ...</Typography>;
+    }
+
+    if (users.length === 0) {
+        return <Typography>There are no users!</Typography>;
+    }
+
     return (
         <Container>
             <Grid container>
-                <UserCard name={john.name} age={john.age} />
-                <UserCard name={jane.name} age={jane.age} />
+                {
+                    users.map((user, index) =>
+                        <UserCard key={index} name={user.name} age={user.age} />
+                    )
+                }
             </Grid>
         </Container>
     );
