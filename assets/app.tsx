@@ -1,22 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-interface User {
-    name: string;
-    id: number;
-}
-
-const user: User = {
-    name: "Typescript Writer",
-    id: 1
-}
+import React from "react";
+import { createRoot } from "react-dom/client";
+import UsersView from "./components/UsersView";
 
 export default function App() {
     return (
         <div style={{ display: 'flex' }}>
-            Hello {user.name}!
+            <UsersView/>
         </div>
     );
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const element = document.getElementById('app');
+const root = createRoot(element);
+root.render(<App />, );
