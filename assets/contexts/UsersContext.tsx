@@ -65,13 +65,12 @@ function UsersContextProvider(props) {
         dispatch({ type: 'START_INCREASING_SCORE', id: user.id });
         score(user.id)
             .then(response => {
-                dispatch({ type: 'FINISH_INCREASING_SCORE', id: user.id });
             })
             .catch(error => {
                 console.error('failed to increase score: ', error);
             })
             .finally(() => {
-                console.log('finished increasing score');
+                dispatch({ type: 'FINISH_INCREASING_SCORE', id: user.id });
             });
     }
 
