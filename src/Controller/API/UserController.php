@@ -2,6 +2,7 @@
 
 namespace App\Controller\API;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -22,5 +23,13 @@ class UserController extends AbstractController
     {
         $users = $this->repository->findAll();
         return $this->json($users, Response::HTTP_OK);
+    }
+
+    #[Route('/api/users/{id}/score', name: 'api_users_score', methods: 'PATCH')]
+    public function score(User $user): JsonResponse
+    {
+        $user->score();
+        $this->repository->save($user);
+        return $this->json($user, Response::HTTP_OK);
     }
 }

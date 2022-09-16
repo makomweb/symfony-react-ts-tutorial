@@ -4,7 +4,7 @@ import {UserCard} from "./UserCard";
 import {UsersContext} from "../contexts/UsersContext";
 
 export default function UsersView() {
-    const { users } = useContext(UsersContext);
+    const { users, increaseScore } = useContext(UsersContext);
 
     const getContent = () => {
         if (users === null) {
@@ -15,8 +15,15 @@ export default function UsersView() {
             return <Typography>There are no users!</Typography>;
         }
 
-        return users.map((user, index) =>
-            <UserCard key={index} name={user.name} age={user.age} />
+        return users.map((user, index) => {
+                return (
+                    <UserCard
+                        key={index}
+                        user={user}
+                        increaseScore={() => increaseScore(user)}
+                    />
+                );
+            }
         )
     }
 

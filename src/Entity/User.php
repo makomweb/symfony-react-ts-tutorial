@@ -20,6 +20,9 @@ class User
     #[ORM\Column]
     private ?int $age = null;
 
+    #[ORM\Column]
+    private ?int $score = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,5 +50,23 @@ class User
         $this->age = $age;
 
         return $this;
+    }
+
+    public function getScore(): ?int
+    {
+        return $this->score;
+    }
+
+    public function setScore(int $score): self
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    public function score(): int
+    {
+        $this->score++;
+        return $this->score;
     }
 }

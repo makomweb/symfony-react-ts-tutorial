@@ -1,5 +1,6 @@
 import React, {createContext, useEffect, useState} from "react";
-import getUsers from "../services/UsersService";
+import {getUsers, score} from "../services/UsersService";
+import {User} from "../components/User";
 
 export const UsersContext = createContext(null);
 
@@ -22,8 +23,22 @@ function UsersContextProvider(props) {
             });
     }
 
+    const increaseScore = (user: User) => {
+        console.log('increase score!');
+        score(user.id)
+            .then(response => {
+
+            })
+            .catch(error => {
+
+            })
+            .finally(() => {
+
+            });
+    }
+
     return (
-        <UsersContext.Provider value={{ users }}>
+        <UsersContext.Provider value={{ users, increaseScore }}>
             {props.children}
         </UsersContext.Provider>
     );
