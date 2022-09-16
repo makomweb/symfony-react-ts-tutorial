@@ -14,6 +14,17 @@ function reduce(state, action) {
             return {users: payload};
         }
 
+        case 'START_INCREASING_SCORE': {
+            const {id} = action;
+            return {
+                users: state.users.map(u => {
+                    if (u.id === id) {
+                        return {...u, score: u.score + 1};
+                    }
+                    return u;
+                })
+            };
+        }
         default: return state;
     }
 }
@@ -38,7 +49,7 @@ function UsersContextProvider(props) {
     }
 
     const increaseScore = (user: User) => {
-        // TODO update the UI ???
+        dispatch({ type: 'START_INCREASING_SCORE', id: user.id });
         score(user.id)
             .then(response => {
                 // TODO update the UI ???
