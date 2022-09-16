@@ -6,9 +6,7 @@ export const UsersContext = createContext(null);
 
 function reduce(state, action) {
     const { type } = action;
-
-    switch (type)
-    {
+    switch (type) {
         case 'ON_LOAD_USERS_SUCCESS': {
             const {payload} = action;
             return {users: payload};
