@@ -19,7 +19,7 @@ function reduce(state, action) {
             return {
                 users: state.users.map(u => {
                     if (u.id === id) {
-                        return {...u, score: u.score + 1};
+                        return {...u, score: u.score + 1, increasing: true};
                     }
                     return u;
                 })
