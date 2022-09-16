@@ -9,9 +9,10 @@ function reduce(state, action) {
 
     switch (type)
     {
-        case 'ON_LOAD_USERS_SUCCESS':
-            const { payload } = action;
-            return { users: payload };
+        case 'ON_LOAD_USERS_SUCCESS': {
+            const {payload} = action;
+            return {users: payload};
+        }
 
         default: return state;
     }
