@@ -25,6 +25,19 @@ function reduce(state, action) {
                 })
             };
         }
+
+        case 'FINISH_INCREASING_SCORE': {
+            const {id} = action;
+            return {
+                users: state.users.map(u => {
+                    if (u.id === id) {
+                        return {...u, increasing: false};
+                    }
+                    return u;
+                })
+            };
+        }
+
         default: return state;
     }
 }
@@ -52,7 +65,7 @@ function UsersContextProvider(props) {
         dispatch({ type: 'START_INCREASING_SCORE', id: user.id });
         score(user.id)
             .then(response => {
-                // TODO update the UI ???
+                dispatch({ type: 'FINISH_INCREASING_SCORE', id: user.id });
             })
             .catch(error => {
                 console.error('failed to increase score: ', error);
