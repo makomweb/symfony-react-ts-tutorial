@@ -1,11 +1,24 @@
-import React, {createContext, useEffect, useState} from "react";
+import React, {createContext, useEffect, useReducer, useState} from "react";
 import {getUsers, score} from "../services/UsersService";
 import {User} from "../components/User";
 
 export const UsersContext = createContext(null);
 
+function reduce(state, action) {
+    const { type } = action;
+
+    switch (type)
+    {
+        case 'ON_LOAD_USERS_SUCCESS':
+            const { payload } = action;
+            return { users: payload };
+
+        default: return state;
+    }
+}
+
 function UsersContextProvider(props) {
-    const [users, setUsers] = useState(null)
+    const [state, dispatch] = useReducer(reduce, { users: [] });
 
     useEffect(() => fetchUsers(), []);
 
@@ -13,7 +26,7 @@ function UsersContextProvider(props) {
         getUsers()
             .then(response => {
                 const { data } = response;
-                setUsers(data);
+                dispatch({ type: 'ON_LOAD_USERS_SUCCESS', payload: data });
             })
             .catch(error => {
                 console.error('failed to load users: ', error);
@@ -38,7 +51,7 @@ function UsersContextProvider(props) {
     }
 
     return (
-        <UsersContext.Provider value={{ users, increaseScore }}>
+        <UsersContext.Provider value={{ users: state.users, increaseScore }}>
             {props.children}
         </UsersContext.Provider>
     );
