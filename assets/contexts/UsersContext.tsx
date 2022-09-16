@@ -41,7 +41,7 @@ function reduce(state, action) {
 }
 
 function UsersContextProvider(props) {
-    const [state, dispatch] = useReducer(reduce, { users: [] });
+    const [state, dispatch] = useReducer(reduce, { users: null });
 
     useEffect(() => fetchUsers(), []);
 
