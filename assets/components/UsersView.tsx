@@ -1,4 +1,4 @@
-import {Container, Grid, Typography} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 import React, {useContext} from "react";
 import {UserCard} from "./UserCard";
 import {UsersContext} from "../contexts/UsersContext";
@@ -28,10 +28,16 @@ export default function UsersView() {
     }
 
     return (
-        <Container>
-            <Grid container>
+        <Grid
+            container
+            spacing={0}
+            alignItems="center"
+            justifyContent="center"
+            style={{ minHeight: '100vh' }}
+        >
+            <Grid item xs={3}>
                 { getContent() }
             </Grid>
-        </Container>
+        </Grid>
     );
 }
