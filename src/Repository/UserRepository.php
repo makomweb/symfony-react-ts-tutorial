@@ -48,6 +48,17 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
+    public function saveUsers(array $users, bool $flush = true): void
+    {
+        foreach ($users as $user) {
+            $this->getEntityManager()->persist($user);
+        }
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

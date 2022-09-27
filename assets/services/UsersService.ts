@@ -22,3 +22,7 @@ export function score(userId: number) {
         }
     );
 }
+
+export function reset() {
+    return axios.delete('/api/users/scores');
+}

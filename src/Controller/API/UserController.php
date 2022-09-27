@@ -32,4 +32,18 @@ class UserController extends AbstractController
         $this->repository->save($user);
         return $this->json($user, Response::HTTP_OK);
     }
+
+    #[Route('/api/users/scores', name: 'api_users_reset_scores', methods: 'DELETE')]
+    public function reset(): JsonResponse
+    {
+        $users = $this->repository->findAll();
+
+        foreach ($users as $user) {
+            $user->setScore(0);
+        }
+
+        $this->repository->saveUsers($users);
+
+        return $this->json($users, Response::HTTP_OK);
+    }
 }
