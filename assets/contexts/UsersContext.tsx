@@ -59,20 +59,23 @@ function reduce(state, action) {
 function UsersContextProvider(props) {
     const [state, dispatch] = useReducer(reduce, { users: null });
 
-    useEffect(() => fetchUsers(), []);
+    useEffect(() => {
+        (async () => { await fetchUsers(); })();
+        return () => {}
+    }, []);
 
-    const fetchUsers = () => {
-        getUsers()
-            .then(response => {
-                const { data } = response;
-                dispatch({ type: 'ON_LOAD_USERS_SUCCESS', payload: data });
-            })
-            .catch(error => {
-                console.error('failed to load users: ', error);
-            })
-            .finally(() => {
-                console.log('finished loading users')
-            });
+    const fetchUsers = async () => {
+        try {
+            const response = await getUsers();
+            const {data} = response;
+            dispatch({type: 'ON_LOAD_USERS_SUCCESS', payload: data});
+        }
+        catch (ex: any) {
+            console.error('failed to load users: ', ex);
+        }
+        finally {
+            console.log('finished loading users');
+        }
     }
 
     const increaseScore = (user: User) => {
