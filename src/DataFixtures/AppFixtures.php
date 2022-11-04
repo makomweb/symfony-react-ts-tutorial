@@ -15,13 +15,13 @@ class AppFixtures extends Fixture
         $john->setAge(23);
         $john->setScore(0);
 
-        $jane = new Player();
-        $jane->setName('Mary');
-        $jane->setAge(24);
-        $jane->setScore(0);
+        $mary = new Player();
+        $mary->setName('Mary');
+        $mary->setAge(24);
+        $mary->setScore(0);
 
         $manager->persist($john);
-        $manager->persist($jane);
+        $manager->persist($mary);
 
         $manager->flush();
     }
