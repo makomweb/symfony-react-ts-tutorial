@@ -8,11 +8,11 @@ import {
 } from "@mui/material";
 import React from "react";
 
-export function UserCard(props) {
-    const { user, increaseScore } = props;
+export function PlayerCard(props) {
+    const { user: player, increaseScore } = props;
 
     const getScoreText = () => {
-        const { score } = user;
+        const { score } = player;
         if (score === 0) {
             return 'no points';
         }
@@ -26,13 +26,13 @@ export function UserCard(props) {
 
     return (
         <Card sx={{minWidth: 275, m: 2}}>
-            <CardActionArea onClick={increaseScore} disabled={user.increasing}>
+            <CardActionArea onClick={increaseScore} disabled={player.increasing}>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {user.name}
+                        {player.name}
                     </Typography>
                     {
-                        user.increasing
+                        player.increasing
                             ? <CircularProgress size={26}/>
                             : <Chip label={getScoreText()} color={'success'} />
                     }

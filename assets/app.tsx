@@ -1,14 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import UsersView from "./components/UsersView";
-import UsersContextProvider from "./contexts/UsersContext";
+import PlayersView from "./components/PlayersView";
+import PlayersContextProvider from "./contexts/PlayersContext";
 
 export default function App() {
     return (
         <div style={{ display: 'flex' }}>
-            <UsersContextProvider>
-                <UsersView/>
-            </UsersContextProvider>
+            <PlayersContextProvider>
+                <PlayersView/>
+            </PlayersContextProvider>
         </div>
     );
 }

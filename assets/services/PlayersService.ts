@@ -1,9 +1,9 @@
 import axios from "axios";
-import {User} from "../components/User";
+import {Player} from "../components/Player";
 
-export function getUsers() {
-    return axios.get<Array<User>>(
-        '/api/users',
+export function getPlayers() {
+    return axios.get<Array<Player>>(
+        '/api/players',
         {
             headers: {
                 Accept: 'application/json'
@@ -13,8 +13,8 @@ export function getUsers() {
 }
 
 export function score(userId: number) {
-    return axios.patch<User>(
-        `/api/users/${userId}/score`,
+    return axios.patch<Player>(
+        `/api/players/${userId}/score`,
         {
             headers: {
                 Accept: 'application/json'
@@ -24,5 +24,5 @@ export function score(userId: number) {
 }
 
 export function reset() {
-    return axios.delete('/api/users/scores');
+    return axios.delete('/api/players/scores');
 }

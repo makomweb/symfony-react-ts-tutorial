@@ -1,29 +1,29 @@
 import {Button, CircularProgress, Container, Grid, Typography} from "@mui/material";
 import React, {useContext} from "react";
-import {UserCard} from "./UserCard";
-import {UsersContext} from "../contexts/UsersContext";
+import {PlayerCard} from "./PlayerCard";
+import {PlayersContext} from "../contexts/PlayersContext";
 
-export default function UsersView() {
-    const { users, increaseScore, resetScores } = useContext(UsersContext);
+export default function PlayersView() {
+    const { players, increaseScore, resetScores } = useContext(PlayersContext);
 
     const getContent = () => {
-        if (users === null) {
+        if (players === null) {
             return <Grid flexGrow={1} textAlign={'center'}><CircularProgress /></Grid>;
         }
 
-        if (users.length === 0) {
-            return <Typography align={'center'}>There are no users!</Typography>;
+        if (players.length === 0) {
+            return <Typography align={'center'}>There are no players!</Typography>;
         }
 
         return (
             <>
                 {
-                    users.map((user, index) => {
+                    players.map((player, index) => {
                         return (
-                            <UserCard
+                            <PlayerCard
                                 key={index}
-                                user={user}
-                                increaseScore={() => increaseScore(user)}
+                                user={player}
+                                increaseScore={() => increaseScore(player)}
                             />
                         );
                     })

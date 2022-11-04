@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
+use App\Entity\Player;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<User>
+ * @extends ServiceEntityRepository<Player>
  *
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
- * @method User[]    findAll()
- * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Player|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Player|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Player[]    findAll()
+ * @method Player[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository
+class PlayersRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, User::class);
+        parent::__construct($registry, Player::class);
     }
 
-    public function add(User $entity, bool $flush = false): void
+    public function add(Player $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(User $entity, bool $flush = false): void
+    public function remove(Player $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -39,7 +39,7 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
-    public function save(User $entity, bool $flush = true): void
+    public function save(Player $entity, bool $flush = true): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -48,10 +48,10 @@ class UserRepository extends ServiceEntityRepository
         }
     }
 
-    public function saveUsers(array $users, bool $flush = true): void
+    public function savePlayers(array $players, bool $flush = true): void
     {
-        foreach ($users as $user) {
-            $this->getEntityManager()->persist($user);
+        foreach ($players as $player) {
+            $this->getEntityManager()->persist($player);
         }
 
         if ($flush) {
