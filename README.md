@@ -20,7 +20,11 @@ npm install @babel/plugin-proposal-class-properties @babel/plugin-transform-runt
 ## Run
 
 ~~~bash
+# to install backend dependencies
 composer install
+
+# to install frontend dependencies
+npm install
 
 # create database
 php bin/console doctrine:database:create
